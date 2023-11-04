@@ -9,9 +9,19 @@
         <input matInput formControlName="id" type="number">
       </mat-form-field>
       <mat-form-field class="example-full-width">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="roleId" name="role">
+          <mat-option *ngFor="let role of roleList" [value]="role.id">
+            {{role.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--
+      <mat-form-field class="example-full-width">
+        formControlName="grid"
         <mat-label>Role ID</mat-label>
         <input matInput formControlName="roleId" type="number">
-      </mat-form-field>
+      </mat-form-field>-->
       <mat-form-field class="example-full-width">
         <mat-label>nombre</mat-label>
         <input matInput formControlName="nombre">
@@ -30,7 +40,7 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Cedula</mat-label>
-        <input matInput formControlName="cedula" maxlength="15" #cedula>
+        <input matInput formControlName="cedula" maxlength="11" #cedula>
         <mat-hint align="end">{{cedula.value.length}}/11</mat-hint>
       </mat-form-field>
       <mat-form-field>

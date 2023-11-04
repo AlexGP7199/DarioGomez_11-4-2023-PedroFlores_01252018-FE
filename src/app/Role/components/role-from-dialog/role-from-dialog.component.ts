@@ -86,7 +86,9 @@ export class RoleFromDialogComponent implements OnInit {
             text: 'Asegurese que el usuario o el id no esten creados',
           })
         }
+
       })
+      this.RoleForm.controls['id'].disable();
     }else{
       Swal.fire({
         icon: 'error',

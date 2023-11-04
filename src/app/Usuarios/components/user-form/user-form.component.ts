@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Usuario } from '../../interfaces/usuario.interface';
 import Swal from 'sweetalert2';
+import { Role } from 'src/app/Role/interfaces/role.interface';
+import { RoleService } from 'src/app/Role/services/role.service';
 
 @Component({
   selector: 'app-user-form',
@@ -15,10 +17,14 @@ export class UserFormComponent implements OnInit {
   actionBtn : string = "Guardar"
   UserForm !: FormGroup
   isCreating : boolean = true;
-  constructor(private userServ : UsuarioService, private fb : FormBuilder, private dialogRef : MatDialogRef<UserFormComponent>,@Inject(MAT_DIALOG_DATA) public editData : Usuario) {}
+
+  roleList : Role[] = []
+
+  constructor(private roleS : RoleService ,private userServ : UsuarioService, private fb : FormBuilder, private dialogRef : MatDialogRef<UserFormComponent>,@Inject(MAT_DIALOG_DATA) public editData : Usuario) {}
 
 
   ngOnInit(): void {
+    this.getRoleList();
     this.UserForm = this.fb.group({
       id : ['',Validators.required],
       roleId : ['', Validators.required],
@@ -33,7 +39,7 @@ export class UserFormComponent implements OnInit {
     if(this.editData){
       console.log(this.editData)
       this.actionBtn = "Actualizar"
-      this.isCreating = false;
+      //  this.isCreating = false;
       this.UserForm.controls['id'].setValue(this.editData.id);
       this.UserForm.controls['id'].disable();
       this.UserForm.controls['roleId'].setValue(this.editData.roleId);
@@ -49,6 +55,13 @@ export class UserFormComponent implements OnInit {
     }
   }
 
+  getRoleList(){
+    this.roleS.getAllRoles().subscribe({
+      next : (res) => {
+        this.roleList = res;
+      }
+    })
+  }
   createUser(){
     if(this.UserForm.valid){
       console.log(this.UserForm.value);
@@ -99,6 +112,7 @@ export class UserFormComponent implements OnInit {
           })
         }
       })
+      this.UserForm.controls['id'].disable();
     }else{
       Swal.fire({
         icon: 'error',
