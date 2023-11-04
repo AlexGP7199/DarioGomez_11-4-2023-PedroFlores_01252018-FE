@@ -18,6 +18,7 @@ export class RoleFromDialogComponent implements OnInit {
 
   actionBtn : string = "Guardar"
   RoleForm !: FormGroup
+  isCreating : boolean = true;
 
   ngOnInit(): void {
     this.RoleForm = this.fb.group({
@@ -27,9 +28,13 @@ export class RoleFromDialogComponent implements OnInit {
 
     if(this.editData){
       this.actionBtn = "Actualizar";
+      this.isCreating = false;
       this.RoleForm.controls['id'].setValue(this.editData.id);
       this.RoleForm.controls['id'].disable();
       this.RoleForm.controls['nombre'].setValue(this.editData.nombre);
+    }else{
+      this.RoleForm.controls['id'].disable();
+
     }
   }
 

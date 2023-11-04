@@ -4,7 +4,7 @@
 <div class="dialog-content">
   <div class="form-container">
     <form class="example-form" [formGroup]="RoleForm">
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" *ngIf="!isCreating">
         <mat-label>Id</mat-label>
         <input matInput formControlName="id" type="number">
       </mat-form-field>
