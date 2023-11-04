@@ -1,0 +1,21 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-side-nav>
+    </app-side-nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header class="headerZ"(toggleSidebarForMe)="sideBarToggler()"></app-header>
+    <div class="page">
+      <div class="page__box">Usuarios</div>
+      <div class="page__content">
+        <app-user-table (editUserEvent)="editUser($event)" (removeUserEvent)="removeUser($event)" (addUserEvent)="addUser($event)" [userList]="userList"></app-user-table>
+        </div>
+      </div>
+
+
+
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

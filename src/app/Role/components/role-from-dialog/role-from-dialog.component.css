@@ -1,0 +1,26 @@
+.example-form {
+  min-width: 200px;
+  max-width: auto;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.dialog-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.container-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f95959;
+}
+.RolDialog{
+  color: white;
+}
