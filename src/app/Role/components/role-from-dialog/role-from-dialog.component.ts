@@ -54,7 +54,7 @@ export class RoleFromDialogComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Asegurese que el usuario o el id no esten creados',
+            text: 'Asegurese que el usuario no coincida con otro usuario',
           })
         },
       })
@@ -83,7 +83,7 @@ export class RoleFromDialogComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Asegurese que el usuario o el id no esten creados',
+            text: 'Asegurese que el usuario no coincida con otro usuario a nivel de informacion',
           })
         }
 
